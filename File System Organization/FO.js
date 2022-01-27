@@ -33,20 +33,27 @@ function helpFn() {
                         3) help - node FO.js help            `);
 }
 
+// organize func will organize all my target folder's files in a different folders according to their extensions
 function organizeFn(dirPath) {
   let destPath;
   if (dirPath == undefined) {
     console.log("Please enter a valid directory path");
     return;
-  }
+  } // check whether directory path is passed or not, if not simply return
+
   let doesExist = fs.existsSync(dirPath); // check if path exists or not
+  // this doesExist will tell the  Target Folder exists or not
   if (doesExist) {
-    destPath = path.join(dirPath, "organizedFiles"); // if true, now make a path inside it as organizedFiles
+    destPath = path.join(dirPath, "organizedFiles"); // if true, now make a path inside it as organizedFiles Folder
     if (fs.existsSync(destPath) == false) {
       // this is to check if the folder created above doesn't already exists, if not then create it by mkdir
       fs.mkdirSync(destPath);
     } else {
       console.log("Folder already exists"); // else it means my folder already exists
     }
+  } else {
+    console.log("Please enter a valid path");
   }
 }
+
+// C:\Users\dell\Desktop\Pepcoding\webdev\Projects\File Organization Project\testFolder\organizedFiles - we are ready to create folder here
